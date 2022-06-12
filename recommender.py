@@ -184,14 +184,12 @@ def content_based_recommendations(df, input_course, courses):
     # make the recommendation
     rec_courses_similar = recommendations(df, input_course, cosine_sim, True)
     temp_sim = df[df['course_name'].isin(rec_courses_similar)]
-    rec_courses_dissimilar = recommendations(df, input_course, cosine_sim, False)
-    temp_dissim = df[df['course_name'].isin(rec_courses_dissimilar)]
+    
 
     # top 3
     st.write("Top 5 most similar courses")
     st.write(temp_sim)
-    st.write("Top 5 most dissimilar courses")
-    st.write(temp_dissim)
+    
 
 def prep_for_cbr(df):
 
@@ -242,7 +240,7 @@ def prep_for_cbr(df):
 
     rec_radio = st.sidebar.radio("Recommend Similar Courses", ('no', 'yes'), index=0)
     if (rec_radio=='yes'):
-        content_based_recommendations(df, input_course, courses)
+     content_based_recommendations(df, input_course, courses)
 
     # recommend based on selected course
 
